@@ -1,0 +1,214 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="e6823bec-f4a6-4afc-98d1-91b8f20e4c17" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Cancer DW</ID>
+  <Name>Cancer DW</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value></Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>Cancer DW</DataSourceID>
+  <Schema>
+    <xs:schema id="Cancer_x0020_DW" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="Cancer_x0020_DW" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="014e4b80-fb55-4fb8-bfe6-cbfac14b7dd4">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_FactMedical" msprop:DbTableName="FactMedical" msprop:FriendlyName="FactMedical" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="3d6c583a-8ed7-4281-96fd-14a4e63514e6">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="Id" msprop:DbColumnName="Id" msprop:design-time-name="c58154e8-e1b4-4619-a265-d0ba600472d0" type="xs:int" />
+                  <xs:element name="Patient_x0020_Code" msprop:FriendlyName="Patient Code" msprop:DbColumnName="Patient Code" msprop:design-time-name="3d25ebec-344c-4c62-8974-b8b03c9b17db" type="xs:int" minOccurs="0" />
+                  <xs:element name="Topography_x0020_Code" msprop:FriendlyName="Topography Code" msprop:DbColumnName="Topography Code" msprop:design-time-name="11237845-1280-4777-8e71-8ffe05b18091" type="xs:short" minOccurs="0" />
+                  <xs:element name="Code_x0020_of_x0020_Morphology" msprop:FriendlyName="Code of Morphology" msprop:DbColumnName="Code of Morphology" msprop:design-time-name="df6c208a-22b7-4509-9273-39dadcee4559" type="xs:int" minOccurs="0" />
+                  <xs:element name="Illness_x0020_Code" msprop:FriendlyName="Illness Code" msprop:DbColumnName="Illness Code" msprop:design-time-name="9ab9bda8-0747-4a6f-a341-d52505d05268" type="xs:short" minOccurs="0" />
+                  <xs:element name="Indicator_x0020_of_x0020_Rare_x0020_Case" msprop:FriendlyName="Indicator of Rare Case" msprop:DbColumnName="Indicator of Rare Case" msprop:design-time-name="e088b5dc-d2a8-4226-bf6b-4fea746239d9" type="xs:short" minOccurs="0" />
+                  <xs:element name="Diagnostic_x0020_means" msprop:FriendlyName="Diagnostic means" msprop:DbColumnName="Diagnostic means" msprop:design-time-name="d21040ed-03ef-4888-b4da-ec037a63a242" type="xs:short" minOccurs="0" />
+                  <xs:element name="Extension" msprop:FriendlyName="Extension" msprop:DbColumnName="Extension" msprop:design-time-name="30e3bdde-b26a-4386-9dbb-168267a49df9" type="xs:short" minOccurs="0" />
+                  <xs:element name="Laterality" msprop:FriendlyName="Laterality" msprop:DbColumnName="Laterality" msprop:design-time-name="329ce0e0-2ab5-47f4-895b-c8abc97d4501" type="xs:short" minOccurs="0" />
+                  <xs:element name="Statement" msprop:FriendlyName="Statement" msprop:DbColumnName="Statement" msprop:design-time-name="1089269a-d621-4539-9212-39e5c86a9383" type="xs:short" minOccurs="0" />
+                  <xs:element name="TNM" msprop:FriendlyName="TNM" msprop:DbColumnName="TNM" msprop:design-time-name="f7c16102-037f-438e-b0fd-b95aabcfb26a" type="xs:short" minOccurs="0" />
+                  <xs:element name="Status_x0020_Vital" msprop:FriendlyName="Status Vital" msprop:DbColumnName="Status Vital" msprop:design-time-name="6dac6fae-b72a-44e4-b6fe-3b48c63a016e" type="xs:short" minOccurs="0" />
+                  <xs:element name="Type_x0020_of_x0020_Death" msprop:FriendlyName="Type of Death" msprop:DbColumnName="Type of Death" msprop:design-time-name="3904cea8-bbdc-4e9e-8850-5788087702f5" type="xs:short" minOccurs="0" />
+                  <xs:element name="Date_x0020_of_x0020_Death" msprop:FriendlyName="Date of Death" msprop:DbColumnName="Date of Death" msprop:design-time-name="7c9fc030-891e-4858-b65a-f5737b07cd03" type="xs:dateTime" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimMorphology" msprop:DbTableName="DimMorphology" msprop:FriendlyName="DimMorphology" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="3977345d-0ef5-4858-a6d6-aa8502197f50">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Code_x0020_of_x0020_Morphology" msprop:FriendlyName="Code of Morphology" msprop:DbColumnName="Code of Morphology" msprop:design-time-name="874e361e-1c5a-4baf-a02b-f94f4ba3a9b7" type="xs:int" />
+                  <xs:element name="Morphology_x0020_Description" msprop:FriendlyName="Morphology Description" msprop:DbColumnName="Morphology Description" msprop:design-time-name="5c163ee1-0096-40fe-8aa6-f201f9af0f4b" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="400" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimTime" msprop:DbTableName="DimTime" msprop:FriendlyName="DimTime" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="b7b28606-6d92-49fc-9e9c-4d8e8785c379">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Date_x0020_of_x0020_Death" msprop:FriendlyName="Date of Death" msprop:DbColumnName="Date of Death" msprop:design-time-name="2340ecab-d1ba-45fb-ac59-9ab32c9bb3d3" type="xs:dateTime" />
+                  <xs:element name="Month" msprop:FriendlyName="Month" msprop:DbColumnName="Month" msprop:design-time-name="f1547ba1-e7f3-4576-a1cb-6d95ce8b5ed4" type="xs:int" minOccurs="0" />
+                  <xs:element name="Quater" msprop:FriendlyName="Quater" msprop:DbColumnName="Quater" msprop:design-time-name="d6f9941d-9e5a-4b82-a47b-30cc540f220a" type="xs:int" minOccurs="0" />
+                  <xs:element name="Year" msprop:FriendlyName="Year" msprop:DbColumnName="Year" msprop:design-time-name="871b841b-97f6-48b0-a1d3-f3cdc0fb0968" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimDisease" msprop:DbTableName="DimDisease" msprop:FriendlyName="DimDisease" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="d8ca26d0-5e0f-4798-9c4f-8f830fba82e0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Illness_x0020_Code" msprop:FriendlyName="Illness Code" msprop:DbColumnName="Illness Code" msprop:design-time-name="b6988767-5091-4b31-80cf-290d0e608e45" type="xs:short" />
+                  <xs:element name="Description_x0020_of_x0020_Disease" msprop:FriendlyName="Description of Disease" msprop:DbColumnName="Description of Disease" msprop:design-time-name="f82d34b5-3645-4ec3-bde0-c12e2c60f4b8" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="400" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Child_x0020_Illness_x0020_Code" msprop:FriendlyName="Child Illness Code" msprop:DbColumnName="Child Illness Code" msprop:design-time-name="dfc99bf0-67e9-4a4b-ab6f-70481648974c" type="xs:short" minOccurs="0" />
+                  <xs:element name="Child_x0020_Illness_x0020_Description" msprop:FriendlyName="Child Illness Description" msprop:DbColumnName="Child Illness Description" msprop:design-time-name="ceb7c871-6f34-4386-8f61-04fea74bc463" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="400" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Code_x0020_of_x0020_Disease_x0020_Adult_x0020_Young_x0020_" msprop:FriendlyName="Code of Disease Adult Young " msprop:DbColumnName="Code of Disease Adult Young " msprop:design-time-name="d28fc972-204e-4e81-9a9c-c004988f6119" type="xs:short" minOccurs="0" />
+                  <xs:element name="Youth_x0020_Adult_x0020_Illness_x0020_Description" msprop:FriendlyName="Youth Adult Illness Description" msprop:DbColumnName="Youth Adult Illness Description" msprop:design-time-name="e0fa2948-820d-4891-a634-8e62343f718a" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="400" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimTopography" msprop:DbTableName="DimTopography" msprop:FriendlyName="DimTopography" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="d0848261-c748-4bcd-bce6-73d0739fbdf6">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Topography_x0020_Code" msprop:FriendlyName="Topography Code" msprop:DbColumnName="Topography Code" msprop:design-time-name="8f35e6c2-ed8b-41e0-b0ea-f431bf24629a" type="xs:short" />
+                  <xs:element name="Description_x0020_of_x0020_Topography" msprop:FriendlyName="Description of Topography" msprop:DbColumnName="Description of Topography" msprop:design-time-name="f101a68f-2163-448a-8c0f-a3ed2f80ff9b" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="400" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimPatient" msprop:DbTableName="DimPatient" msprop:FriendlyName="DimPatient" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="10fc50a2-7f05-4878-ba56-2dfb93227327">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Patient_x0020_Code" msprop:FriendlyName="Patient Code" msprop:DbColumnName="Patient Code" msprop:design-time-name="93a94f6a-431a-46d0-8301-f4836978c093" type="xs:int" />
+                  <xs:element name="Gender" msprop:FriendlyName="Gender" msprop:DbColumnName="Gender" msprop:design-time-name="a9ba99fc-1045-491f-ba69-d90fa0dd2922" type="xs:short" minOccurs="0" />
+                  <xs:element name="Age" msprop:FriendlyName="Age" msprop:DbColumnName="Age" msprop:design-time-name="ca25fe45-6ef0-4459-9134-be59720f8f3f" type="xs:short" minOccurs="0" />
+                  <xs:element name="Raca_x0020_Color" msprop:FriendlyName="Raca Color" msprop:DbColumnName="Raca Color" msprop:design-time-name="5bda31a9-918c-4914-ad04-196c00a677bb" type="xs:short" minOccurs="0" />
+                  <xs:element name="Nationality" msprop:FriendlyName="Nationality" msprop:DbColumnName="Nationality" msprop:design-time-name="0cb60f9d-60b3-476b-b7f0-e2107d198f1e" type="xs:short" minOccurs="0" />
+                  <xs:element name="Degree_x0020_of_x0020_Education" msprop:FriendlyName="Degree of Education" msprop:DbColumnName="Degree of Education" msprop:design-time-name="b5b4fc3b-d46e-40b8-a3a1-1f8bfd784a7b" type="xs:short" minOccurs="0" />
+                  <xs:element name="State_x0020_Civil" msprop:FriendlyName="State Civil" msprop:DbColumnName="State Civil" msprop:design-time-name="2afb4441-9d15-4b27-a7b1-01285df12c30" type="xs:short" minOccurs="0" />
+                  <xs:element name="Code_x0020_Profession" msprop:FriendlyName="Code Profession" msprop:DbColumnName="Code Profession" msprop:design-time-name="33530a1d-e373-467e-aee4-8466433ca377" type="xs:short" minOccurs="0" />
+                  <xs:element name="City_x0020_Address" msprop:FriendlyName="City Address" msprop:DbColumnName="City Address" msprop:design-time-name="0d27f43f-5f8d-4988-816d-49c961f8c577" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="400" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Status_x0020_Address" msprop:FriendlyName="Status Address" msprop:DbColumnName="Status Address" msprop:design-time-name="63c28e7f-ce3e-4b03-bcad-c8acc7640f8f" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="200" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_FactMedical" />
+          <xs:field xpath="Id" />
+        </xs:unique>
+        <xs:unique name="dbo_DimMorphology_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimMorphology" />
+          <xs:field xpath="Code_x0020_of_x0020_Morphology" />
+        </xs:unique>
+        <xs:unique name="dbo_DimTime_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimTime" />
+          <xs:field xpath="Date_x0020_of_x0020_Death" />
+        </xs:unique>
+        <xs:unique name="dbo_DimDisease_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimDisease" />
+          <xs:field xpath="Illness_x0020_Code" />
+        </xs:unique>
+        <xs:unique name="dbo_DimTopography_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimTopography" />
+          <xs:field xpath="Topography_x0020_Code" />
+        </xs:unique>
+        <xs:unique name="dbo_DimPatient_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimPatient" />
+          <xs:field xpath="Patient_x0020_Code" />
+        </xs:unique>
+        <xs:keyref name="fk_fact_topography" refer="dbo_DimTopography_Constraint1">
+          <xs:selector xpath=".//dbo_FactMedical" />
+          <xs:field xpath="Topography_x0020_Code" />
+        </xs:keyref>
+        <xs:keyref name="fk_fact_morphology" refer="dbo_DimMorphology_Constraint1">
+          <xs:selector xpath=".//dbo_FactMedical" />
+          <xs:field xpath="Code_x0020_of_x0020_Morphology" />
+        </xs:keyref>
+        <xs:keyref name="fk_fact_time" refer="dbo_DimTime_Constraint1">
+          <xs:selector xpath=".//dbo_FactMedical" />
+          <xs:field xpath="Date_x0020_of_x0020_Death" />
+        </xs:keyref>
+        <xs:keyref name="fk_fact_patient" refer="dbo_DimPatient_Constraint1">
+          <xs:selector xpath=".//dbo_FactMedical" />
+          <xs:field xpath="Patient_x0020_Code" />
+        </xs:keyref>
+        <xs:keyref name="fk_fact_disease" refer="dbo_DimDisease_Constraint1">
+          <xs:selector xpath=".//dbo_FactMedical" />
+          <xs:field xpath="Illness_x0020_Code" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <Cancer_x0020_DW xmlns="" />
+  </Schema>
+</DataSourceView>

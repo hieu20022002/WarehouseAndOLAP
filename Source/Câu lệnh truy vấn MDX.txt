@@ -1,0 +1,111 @@
+//1.	Đếm số bệnh nhân ung thư chết qua từng năm với mã bệnh là 177
+SELECT NON EMPTY [Measures].[Fact Medical Count] ON COLUMNS,
+NON EMPTY([Dim Time].[Year].CHILDREN) 
+ON ROWS FROM [Cancer DW]
+WHERE [Dim Disease].[Illness Code].&[177];
+//2. Cho biết Mã bệnh, mô tả bệnh, mô tả bệnh ở trẻ em, mô tả bệnh ở người lớn có nhiều người chết vì bệnh đó nhất trong tháng 3 năm 2012
+Select {[Measures].[Fact Medical Count]} on Columns ,  
+{TopCount({[Dim Disease].[Illness Code].CHILDREN*[Dim Disease].[Description Of Disease].Children*[Dim Disease].[Child Illness Description].Children*[Dim Disease].[Code Of Disease Adult Young].Children},1,[Measures].[Fact Medical Count])} on Rows 
+From [Cancer DW] 
+Where  [Dim Time].[Hierarchy].[Year].&[2012].&[1].&[3];
+//3. Thống kê các bệnh nhân có số lượng điều trị lớn hơn 10 lần tại São Paulo
+Select {[Measures].[Fact Medical Count]} on Columns ,  
+	 	 	{Filter 
+	 	 	 	( {[Dim Patient].[Patient Code].Children*[Dim Patient].[Gender].CHILDREN*[Dim Patient].[Age].Children*[Dim Patient].[Raca Color].Children} 
+	 	 	 	,[Measures].[Fact Medical Count] > 10
+	 	 	 	) 
+	 	 	} on Rows 
+From [Cancer DW] 
+Where  [Dim Patient].[City Address].&[SÄ‚O PAULO];
+//4. Tính tỷ lệ phần trăm bệnh nhân có độ tuổi từ 18 đến 40 đã mất theo năm
+WITH MEMBER [Measures].[Percentage 18-40] AS
+SUM(
+FILTER(
+      [Dim Patient].[Patient Code].MEMBERS,
+      [Dim Patient].[Age].CurrentMember.MemberValue > 18 AND [Dim Patient].[Age].CurrentMember.MemberValue < 40)
+	  ,[Measures].[Fact Medical Count]) 
+	  / [Measures].[Fact Medical Count], Format_String = 'Percent' 
+SELECT [Measures].[Percentage 18-40] ON COLUMNS,
+  [Dim Time].[Year].MEMBERS on rows
+FROM [Cancer DW];
+//5. Theo từng tháng, quý, năm chủng tộc và số lượng người mắc trong thời gian đó
+Select NON EMPTY{[Dim Patient].[Raca Color].children
+*[Measures].[Fact Medical Count]} on Columns, 
+	  	NON EMPTY{  
+		DrillDownLevel(
+	  	 	 	DrillDownLevel( 
+	  	 	 	 	DrillDownLevel( 
+	  	 	 	 	[Dim Time].[Hierarchy]) 
+	  	 	 	) 
+	  	 	)
+	  	} on Rows 
+ From [Cancer DW]; 
+// 6. Cho biết mã bệnh ở trẻ em, mô tả bệnh của nó và tổng số lượng bệnh của nó theo từng thành phố lớn hơn 1000
+Select {[Measures].[Fact Medical Count]} on Columns, 
+	  	{Generate( 
+	  	 	[Dim Patient].[City Address].Children,  
+	  	 	[Dim Patient].[City Address].CurrentMember * 
+	  	 	 Filter( 
+	  	 	 	{[Dim Disease].[Child Illness Code].Children 
+	  	 	 	*[Dim Disease].[Child Illness Description].Children}, 
+	  	 	 	  [Measures].[Fact Medical Count]>1000
+	  	 	 	) 
+	  	 	) 
+	  	} on Rows 
+From [Cancer DW]; 
+//7.  Với từng trình độ học vấn liệt kê số lượng người bị ung thư qua từng năm trừ những người không hoàn thành bậc học và các giá trị unknown
+Select NON EMPTY{[Dim Time].[Year].Members} on Columns, 
+	  	{Except( 
+	  	 	{[Dim Patient].[Degree Of Education].Children}, 
+	  	 	{[Dim Patient].[Degree Of Education].[All].UNKNOWNMEMBER, 
+			[Dim Patient].[Degree Of Education].&[6]} 
+	  	 	) 
+	  	} on Rows 
+From [Cancer DW] 
+Where {[Measures].[Fact Medical Count]}; 
+//8. Top 3 căn bệnh ung thư nhiều người bị nhất trong năm 2013
+Select [Measures].[Fact Medical Count] on Columns, 
+	 	 	{TopCount( 
+	 	 	 	{[Dim Disease].[Illness Code].Children}, 
+	 	 	 	3, 
+	 	 	 	[Measures].[Fact Medical Count]
+	 	 	 	) 
+	 	 	} on Rows 
+From [Cancer DW] 
+	Where 	{[Dim Time].[Year].&[2013]}; 
+//9. Thông kê các bệnh ở tuyến yên theo thứ tự giảm dần
+
+SELECT NON EMPTY {[Measures].[Fact Medical Count]} ON COLUMNS,
+NON EMPTY ORDER ([Dim Disease].[Illness Code].CHILDREN,[Measures].[Fact Medical Count] , desc) ON ROWS
+FROM [Cancer DW]
+WHERE ([Dim Topography].[Topography Code].&[132]);
+
+//10.Lấy ra 2 thành phố có số người bị ung thư cao nhất và thấp nhất
+Select {[Measures].[Fact Medical Count]} on Columns, 
+	 	 	{Union( 
+	 	 	 	TopCount(NonEmpty({[Dim Patient].[City Address].children}),1,[Measures].[Fact Medical Count]), 
+	 	 	 	 BottomCount(NonEmpty({ [Dim Patient].[City Address].children}),1,[Measures].[Fact Medical Count]) 
+	 	 	 	) } on rows
+from [Cancer DW];
+//11. Thông kê số bệnh nhân theo căn bệnh từ 1000 đến 10000
+Select 	{[Measures].[Fact Medical Count]} on Columns, 
+ 	 	 
+	 	 	 	{Intersect(  
+	 	 	 	 	{Filter([Dim Disease].[Illness Code].children,[Measures].[Fact Medical Count]  >= 1000)} 
+	 	 	 	 	,{Filter([Dim Disease].[Illness Code].children,[Measures].[Fact Medical Count]  <= 10000)} 
+	 	 	 	)} 
+ 	 	 	 
+	 	 	on Rows 
+From [Cancer DW]; 
+//12. Mỗi thành phố đưa ra 3 loại bệnh mà nhiều người mắc nhất
+Select 	{[Measures].[Fact Medical Count]} on Columns, 
+	 	 	{Generate( 
+	 	 	 	[Dim Patient].[City Address].Children, 
+	 	 	 	TopCount(  
+	 	 	 	 	{[Dim Patient].[City Address].CurrentMember 
+* [Dim Disease].[Illness Code].Children} 
+	 	 	 	 	,3 
+	 	 	 	 	,[Measures].[Fact Medical Count]
+	 	 	 	) 
+	 	 	)} on Rows 
+From [cancer DW]; 
